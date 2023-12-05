@@ -1,0 +1,6 @@
+rootProject.name = 'terminalgrid'
+include ':lib', ':demo'
+include 'api'
+include 'pluginRepeat'
+include 'pluginNotify'
+

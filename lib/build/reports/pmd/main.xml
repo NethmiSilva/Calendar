@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.55.0" timestamp="2023-10-30T17:14:59.141">
+<file name="/mnt/c/Users/delll/OneDrive/Desktop/JAVACC/2023_assignment2_terminalgrid/2023_assignment2_terminalgrid/lib/src/main/java/edu/curtin/terminalgrid/TerminalGrid.java">
+<violation beginline="31" endline="34" begincolumn="8" endcolumn="9" rule="CommentDefaultAccessModifier" ruleset="Code Style" package="edu.curtin.terminalgrid" class="TerminalGrid$BoxChars" method="get" externalInfoUrl="https://pmd.github.io/pmd-6.55.0/pmd_rules_java_codestyle.html#commentdefaultaccessmodifier" priority="3">
+To avoid mistakes add a comment at the beginning of the get method if you want a default access modifier
+</violation>
+</file>
+</pmd>

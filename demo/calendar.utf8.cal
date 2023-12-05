@@ -1,0 +1,22 @@
+event 2023-10-30 17:06:00 90 "Meeting 1"
+event 2023-10-31 08:30:45 45 "Meeting 2"
+event 2023-12-25
+    all-day "Christmas Day"
+
+
+
+plugin edu.curtin.calplugins.Repeat
+{
+  title: "Plugin Repeat",
+  startDate: "2023-11-04",
+  startTime: "14:30:00",
+  duration: "40",
+  repeat: "7"
+}
+plugin edu.curtin.calplugins.Repeat { title: "Plugin All Day Repeat", startDate: "2023-11-06", repeat: "20" }
+plugin edu.curtin.calplugins.Notify { text: "Meeting 1" }
+
+
+script "
+print(""hello world"")
+"

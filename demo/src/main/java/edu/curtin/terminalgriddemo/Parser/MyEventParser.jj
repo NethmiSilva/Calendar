@@ -1,0 +1,80 @@
+options {
+    STATIC = false;
+}
+
+PARSER_BEGIN(MyEventParser)
+
+package edu.curtin.terminalgriddemo.Parser;
+
+import java.util.*;
+
+public class MyEventParser {
+    public static void main(String[] args) {
+        MyEventParser parser = new MyEventParser(System.in);
+        try {
+            parser.Events();
+        } catch (ParseException e) {
+            System.err.println("Parsing error: " + e.getMessage());
+        }
+    }
+}
+
+PARSER_END(MyEventParser)
+
+SKIP : {
+    <( " " | "\t" | "\n" | "\r" )+>
+}
+
+TOKEN : {
+    <WHITESPACE: ("\r\n" | " " | "\n" | "\t" | "\n\t" | "\t\n" | "\n\r" | "\t\r\n" | "\"")+ >
+   | <DATE: (["0"-"9"])+ "-" (["0"-"9"])+ "-" (["0"-"9"])+ >
+   | <TIME: (["0"-"9"])+ ":" (["0"-"9"])+ ":" (["0"-"9"])+>
+   | <DURATION: (["0"-"9"])+>
+   | <TITLE: (~["\n"])>
+   | <EVENT: "event" (<WHITESPACE>)* <DATE> (<WHITESPACE>)* <TIME> (<WHITESPACE>)* <DURATION> (<WHITESPACE>)* (<TITLE>)* >
+   | <ALL_DAY_EVENT: "event" (<WHITESPACE>)* <DATE> (<WHITESPACE>)* "all-day" (<WHITESPACE>)* (<TITLE>)* >
+   | <ID : (["a"-"z", "A"-"Z"] | ["0"-"9"] | ".")+ >
+   | <STRING : "\"" (~["\""])* "\"" >
+   | <PLUGIN_CONTENT: "{" (~["}"])* "}" >
+   | <MULTILINE_PYTHON: "\"" ( ~["\""] | "\\\"" | ~["\\"] | "\\n" | "\\\\[\\]t]|\\]|\\t]*")* "\"">
+   | <MULTILINE_STRING : "\"" (~["\""] | "\"\"")* "\"">
+   | <PLUGIN: "plugin" (<WHITESPACE>)* <ID> (<WHITESPACE>)* <PLUGIN_CONTENT>>
+   | <SCRIPT: "script" (<WHITESPACE>)* <MULTILINE_STRING> >
+}
+
+
+
+public List<String> Events() :
+{
+    List<String> eventList = new ArrayList<String>();
+}
+{
+    (
+        (
+            <EVENT> | <ALL_DAY_EVENT>
+        )
+        {
+            eventList.add(token.image);
+        }
+      |
+          (
+              <PLUGIN>
+          )
+          {
+            eventList.add(token.image);
+          }
+      |
+        (
+            <SCRIPT>
+        )
+        {
+           eventList.add(token.image);
+
+        }
+    )*
+    <EOF>
+    {
+        return eventList;
+    }
+}
+
