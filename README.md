@@ -1,6 +1,8 @@
 
 # Calendar
 The Calendar Application is a versatile tool designed to display and navigate through calendar events, enhancing user experience with intuitive functionalities. 
+
+
 ![menu](https://github.com/NethmiSilva/Calendar/assets/91644460/8b3a0c2a-b1e5-4156-992f-8f18dec7c8d7)
 
 ## Event Types
@@ -20,6 +22,8 @@ Seven-Day Display: The application showcases events scheduled for seven days, st
 Table Format: Events are presented in a table, where columns represent days, and rows represent times of the day. An exclusive row is reserved for "all-day" events.
 
 Current Date Control: Users can shift the current date forward or backward using designated commands.
+
+
 ![move options](https://github.com/NethmiSilva/Calendar/assets/91644460/ba394fc2-6cae-41fc-b722-64f276fa4dba)
 
 ## Search Function
@@ -30,6 +34,8 @@ Free-Form Search: Users can input a free-form search string.
 Search Scope: The application initiates the search from the current date, exploring all events up to one year beyond the current date.
 
 Event Matching: The application identifies and displays events whose titles contain the specified search term.
+
+
 ![search events](https://github.com/NethmiSilva/Calendar/assets/91644460/7fa301fe-1b35-4645-82a4-d5caed9aed74)
 
 ## Internationalisation
@@ -58,4 +64,4 @@ The application uses Gradle with separate subprojects for the core application, 
 
 ## Usage
 To run the core application and load plugins or scripts, use the following command:
-./gradlew run --args="calendarfile.cal"
+### ./gradlew run --args="calendarfile.cal"
